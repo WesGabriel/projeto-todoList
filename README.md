@@ -20,4 +20,4 @@ Este projeto é uma aplicação de lista de tarefas (ToDo List) desenvolvida em 
 
 1. Clone o repositório:
    ```
-   git clone https://github.com/seu-usuario/todo-list.git
+   git clone https://github.com/WesGabriel/projeto-todoList-rockeseat.git
