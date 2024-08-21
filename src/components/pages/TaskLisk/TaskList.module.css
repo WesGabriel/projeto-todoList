@@ -1,0 +1,42 @@
+.taskList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  background: var(--gray-500);
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-around;
+  gap: 0.5rem;
+  margin: 2rem auto;
+  max-width: 52rem;
+  min-height: 5rem;
+  padding: 1rem;
+  border: 1px solid var(--gray-00);
+  border-radius: 8px;
+}
+
+.discription {
+  padding: 1rem;
+}
+
+.check {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 1px solid var(--blue);
+}
+
+.check:hover {
+  background: var(--blue-dark);
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.trash:hover {
+  color: var(--red-500);
+  cursor: pointer;
+}

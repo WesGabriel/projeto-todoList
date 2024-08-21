@@ -1,4 +1,7 @@
 .appContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
