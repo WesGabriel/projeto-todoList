@@ -7,8 +7,10 @@ function App() {
   return (
     <div className={style.appContainer}>
       <Header />
-      <CreateTask />
-      <TaskList />
+      <div className={style.appMain}>
+        <CreateTask />
+        <TaskList />
+      </div>
     </div>
   );
 }

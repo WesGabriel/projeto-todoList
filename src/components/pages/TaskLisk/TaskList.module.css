@@ -26,6 +26,7 @@
 .check {
   width: 1rem;
   height: 1rem;
+  min-width: 1rem;
   border-radius: 50%;
   border: 1px solid var(--blue);
 }
@@ -34,6 +35,10 @@
   background: var(--blue-dark);
   opacity: 0.3;
   cursor: pointer;
+}
+
+.trash {
+  min-width: 1.3rem;
 }
 
 .trash:hover {
