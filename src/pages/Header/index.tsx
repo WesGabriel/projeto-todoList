@@ -1,5 +1,5 @@
-import rocketImage from "../../../assets/rocket.svg";
-import todoImage from "../../../assets/todo.png";
+import rocketImage from "../../assets/rocket.svg";
+import todoImage from "../../assets/todo.png";
 import styles from "./Header.module.css";
 
 export const Header = () => {
