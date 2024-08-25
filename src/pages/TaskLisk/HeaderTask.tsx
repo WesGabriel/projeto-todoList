@@ -1,8 +1,8 @@
 import style from "./TaskList.module.css";
 
 interface HeaderTaskProps {
-  createTaskCount: string;
-  finishedTasksCount: string;
+  createTaskCount?: string;
+  finishedTasksCount?: string;
 }
 
 export const HeaderTask = ({
