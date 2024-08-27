@@ -1,8 +1,9 @@
-import { ClipboardText, PlusCircle } from "@phosphor-icons/react";
+import { PlusCircle } from "@phosphor-icons/react";
 import { Card } from "./Card";
 import style from "./TaskList.module.css";
 import { HeaderTask } from "./HeaderTask";
 import { FormEvent, useState } from "react";
+import { Empty } from "./Empty";
 
 export interface TaskProps {
   id: number;
@@ -14,11 +15,9 @@ export const TaskList = () => {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleCreateTask = (e: FormEvent) => {
     e.preventDefault();
-    if (!content) {
-      return;
-    }
+    if (!content) return;
 
     const newTask: TaskProps = {
       id: new Date().getTime(),
@@ -31,13 +30,11 @@ export const TaskList = () => {
   };
 
   const handleDeleteTask = (id: number) => {
-    const filteredTasks = tasks.filter((task) => task.id !== id);
+    const filterTask = tasks.filter((task) => task.id !== id);
 
-    if (!confirm("Deseja mesmo apagar essa tarefa?")) {
-      return;
-    }
+    if (!confirm("Deseja mesmo apagar essa tarefa?")) return;
 
-    setTasks(filteredTasks);
+    setTasks(filterTask);
   };
 
   const handleCompletedTask = ({
@@ -55,12 +52,23 @@ export const TaskList = () => {
       return { ...task };
     });
 
-    setTasks(updatedTasks);
+    const incompleteTasks = updatedTasks.filter((task) => !task.isChecked);
+    const completedTasks = updatedTasks.filter((task) => task.isChecked);
+
+    setTasks([...incompleteTasks, ...completedTasks]);
   };
+
+  const totalTasksCompleted = tasks.reduce((done, currentTask) => {
+    if (currentTask.isChecked) {
+      return done + 1;
+    }
+
+    return done;
+  }, 0);
 
   return (
     <div className={style.taskList}>
-      <form onSubmit={handleSubmit} className={style.form}>
+      <form onSubmit={handleCreateTask} className={style.form}>
         <input
           type="text"
           placeholder="Adicione uma nova tarefa"
@@ -73,7 +81,10 @@ export const TaskList = () => {
           <PlusCircle size={22} />
         </button>
       </form>
-      <HeaderTask />
+      <HeaderTask
+        createTaskCount={tasks.length}
+        finishedTasksCount={totalTasksCompleted}
+      />
       {tasks.length > 0 ? (
         tasks.map((task) => {
           return (
@@ -86,19 +97,7 @@ export const TaskList = () => {
           );
         })
       ) : (
-        <div className={style.divSleeping}>
-          <ClipboardText
-            className={style.iconClipboard}
-            size={60}
-            weight="duotone"
-          />
-          <h3 className={style.titleSleeping}>
-            Você ainda não tem tarefas cadastradas
-          </h3>
-          <p className={style.subTitleSleeping}>
-            Crie tarefas e organize seus itens a fazer
-          </p>
-        </div>
+        <Empty />
       )}
     </div>
   );

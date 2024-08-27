@@ -1,8 +1,8 @@
 import style from "./TaskList.module.css";
 
 interface HeaderTaskProps {
-  createTaskCount?: string;
-  finishedTasksCount?: string;
+  createTaskCount: number;
+  finishedTasksCount: number;
 }
 
 export const HeaderTask = ({
@@ -13,12 +13,14 @@ export const HeaderTask = ({
     <div className={style.divHeaderTask}>
       <div>
         <span className={style.titleCreateTask}>Tarefas criadas</span>
-        <span className={style.createTaskCount}>{createTaskCount}0</span>
+        <span className={style.createTaskCount}>{createTaskCount}</span>
       </div>
       <div>
         <span className={style.titleFinishedTask}>Conculídas</span>
         <span className={style.finishedTasksCount}>
-          {finishedTasksCount}2 de 5
+          {createTaskCount === 0
+            ? createTaskCount
+            : `${finishedTasksCount} de ${createTaskCount}`}
         </span>
       </div>
     </div>
