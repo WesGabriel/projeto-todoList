@@ -1,6 +1,6 @@
 import { Check, Trash } from "@phosphor-icons/react";
 import style from "./TaskList.module.css";
-import { TaskProps } from ".";
+import { TaskProps } from "./useLogic";
 
 interface CardProps {
   descriptionTask: TaskProps;
