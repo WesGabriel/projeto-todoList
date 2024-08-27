@@ -5,7 +5,6 @@ Este projeto é uma aplicação de lista de tarefas (ToDo List) desenvolvida em 
 ## Funcionalidades
 
 - **Adicionar Tarefa:** O usuário pode adicionar novas tarefas à lista.
-- **Editar Tarefa:** É possível editar o título de uma tarefa existente.
 - **Marcar como Concluída:** As tarefas podem ser marcadas como concluídas, diferenciando-se visualmente das pendentes.
 - **Remover Tarefa:** Tarefas podem ser removidas da lista.
 - **Persistência de Dados:** As tarefas são armazenadas localmente no navegador, garantindo que a lista permaneça ao recarregar a página.
